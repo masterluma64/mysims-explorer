@@ -28,7 +28,8 @@ install opens from **File → Open data root**.
 ## Installing it
 
 1. Download the installer, `mysims-explorer-setup-<version>.exe`, from [Releases](../../releases).
-2. Run it, choose a folder, and press Install.
+2. Run it, choose a folder, and press Install. Run over an earlier version, it updates that copy
+   where it is.
 
 Windows SmartScreen will warn that the program is unrecognised, because the build is not code
 signed. **More info → Run anyway.**
@@ -72,9 +73,15 @@ names thousands more: in MySims Kingdom, 27,546 of its 31,413 files against 21,5
 The lists live at [ThuverX/mysims-hashlist](https://github.com/ThuverX/mysims-hashlist). Take
 the one for the game you are opening, and point the app at it.
 
-On start it asks GitHub once whether a newer release exists, and says so in the menu bar if there
-is one; nothing is downloaded or replaced. **Help → Check for updates** turns that off. After an
-update it shows what changed, from the release's own notes.
+On start it asks GitHub once whether a newer release exists. If there is one, it downloads that
+release's installer in the background and, once the download checks out, offers **Restart to
+update** under the menu bar: the program closes, updates where it is, and opens again. The
+installer is only run when it carries the release signature, so nothing from elsewhere is ever
+installed. **Help → Check for updates** turns all of this off. After an update it shows what
+changed, from the release's own notes.
+
+The viewer shows one file at a time: **Back** and **Forward** (`Alt+←` / `Alt+→`, or the mouse's
+side buttons) move through what you have opened.
 
 ## What it does not do
 
