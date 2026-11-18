@@ -17,7 +17,8 @@ and UI, for finding unused content and other oddities in the game data.
 
 ## What you need
 
-- Windows 10/11
+- Windows 10/11. Nothing else to install: from 0.3.0 the programs carry the Visual C++ runtime
+  they need inside them.
 - A GPU with Direct3D 12 or Vulkan support.
 - Your own copy of at least one of the games, from the PC **Cozy Bundle** release. Nothing from
   the games is included in this download.
@@ -62,10 +63,25 @@ The app's empty page lists these too.
 | Click | Select an object in a 3D view |
 | `F` | Frame the selection |
 | `Space` | Orbit or fly |
+| Middle click | Pause or resume what moves in a 3D view |
 | Properties | What a file uses, and what uses it (click to follow) |
 
 In MySims Kingdom, a level shows its characters where the story puts them: the **Story strip**
 picks a step, and double-clicking a building goes inside at the same step.
+
+**Cutscenes** play in the level they happen in: **View → Story → Cutscenes → Play**, or the **Play
+it** button on any `Cutscene*.lua`. The cast stands where the script puts them and plays its
+animations, the camera takes the script's shots, the dialog is captioned over the view, and the
+sounds and effects play. The strip under the toolbar plays, holds and scrubs it; **Hold each line**
+stops at the end of every dialog line until you press Enter, the way the game waits for a click. A
+cutscene is played from what its script says rather than by running the game, so a line's length
+(unless held), the routes walked and values the script works out while running are approximations.
+
+**Saving a file in the game folder shows it at once.** The program watches the folder it opened:
+the file you're looking at (or one it was built from) opens again where you were, a cutscene
+replays from the same moment, and a new file joins the file list. A cutscene script saved
+half-written says which line breaks it, and a cutscene's strip lists the problems in its script by
+line. The program itself still never writes to the folder.
 
 Most files are named by a hash rather than a name, and the names are recovered from the game's
 own text where they can be. **File → Hash List** takes names from a hash list as well, which
