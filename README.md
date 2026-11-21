@@ -2,9 +2,15 @@
 
 # MySims Explorer
 
-A desktop explorer for the PC **Cozy Bundle** releases of **MySims** and **MySims Kingdom**. It
-opens a game install and shows its models, levels, textures, materials, strings, scripts, audio
-and UI, for finding unused content and other oddities in the game data.
+A desktop explorer for **MySims**, **MySims Kingdom** and **MySims Agents**. It opens a game
+install and shows its models, levels, textures, materials, strings, scripts, audio and UI, for
+finding unused content and other oddities in the game data.
+
+It reads:
+
+- the PC **Cozy Bundle** releases of MySims and MySims Kingdom;
+- the older PC release of MySims (the "Taco Bell edition");
+- the **Wii** discs of MySims, MySims Kingdom and MySims Agents, extracted with Dolphin.
 
 **It is view only. It never writes to the game's files.**
 
@@ -19,12 +25,23 @@ and UI, for finding unused content and other oddities in the game data.
 
 - Windows 10/11. Nothing else to install: from 0.3.0 the programs carry the Visual C++ runtime
   they need inside them.
-- A GPU with Direct3D 12 or Vulkan support.
-- Your own copy of at least one of the games, from the PC **Cozy Bundle** release. Nothing from
-  the games is included in this download.
+- A GPU with Direct3D 12, OpenGL or Vulkan support. The program tries them in that order and
+  uses the first that starts; **Help → About** says which one it draws with.
+- Your own copy of at least one of the games. Nothing from the games is included in this
+  download.
 
-Steam installs are found on their own, wherever Steam and its library folders live. Any other
-install opens from **File → Open data root**.
+Where it finds them:
+
+- **Cozy Bundle:** Steam installs are found on their own, wherever Steam and its library folders
+  live.
+- **Taco Bell edition:** found where its installer put it (by default
+  `C:\Program Files (x86)\Electronic Arts\MySims`).
+- **Wii discs:** extract the whole disc with Dolphin (right-click the game → **Properties →
+  Filesystem**, right-click the disc → **Extract Entire Disc**), one folder per disc, into a
+  `Dumps` folder in your Documents. Every disc there is offered. **File → Wii Dumps Folder** picks
+  another folder to look in.
+
+Any other install opens from **File → Open data root**.
 
 ## Installing it
 
@@ -83,11 +100,34 @@ replays from the same moment, and a new file joins the file list. A cutscene scr
 half-written says which line breaks it, and a cutscene's strip lists the problems in its script by
 line. The program itself still never writes to the folder.
 
+The viewer shows one file at a time: **Back** and **Forward** (`Alt+←` / `Alt+→`, or the mouse's
+side buttons) move through what you have opened.
+
+### The Wii discs
+
+The Wii discs open like the PC releases: their models, textures, materials, levels and worlds
+draw in 3D, characters are built and play their animations, the sound banks and streams play, and
+the Content tab works on them, as does the Story panel's list of Kingdom's tasks. MySims Agents had no PC release, so this is a
+way to look inside it.
+
+Their **scripts** are compiled. They open decompiled, as readable Lua, and Find in Files and the
+links between files read that text. MySims packs all of its scripts into seven large files; the
+Explorer lists the scripts each one holds by name (search finds them too), and opening one shows
+just that script. A few pieces of code can't be put back into Lua and are shown as a commented
+list of instructions instead.
+
+Some of the Wii's shader effects (the gloss on Sims, some water, a few of Agents' own materials)
+are drawn approximately.
+
+### Names
+
 Most files are named by a hash rather than a name, and the names are recovered from the game's
 own text where they can be. **File → Hash List** takes names from a hash list as well, which
 names thousands more: in MySims Kingdom, 27,546 of its 31,413 files against 21,526 without one.
 The lists live at [ThuverX/mysims-hashlist](https://github.com/ThuverX/mysims-hashlist). Take
 the one for the game you are opening, and point the app at it.
+
+### Updates
 
 On start it asks GitHub once whether a newer release exists. If there is one, it downloads that
 release's installer in the background and, once the download checks out, offers **Restart to
@@ -96,16 +136,14 @@ installer is only run when it carries the release signature, so nothing from els
 installed. **Help → Check for updates** turns all of this off. After an update it shows what
 changed, from the release's own notes.
 
-The viewer shows one file at a time: **Back** and **Forward** (`Alt+←` / `Alt+→`, or the mouse's
-side buttons) move through what you have opened.
-
 ## What it does not do
 
 - **It never writes to the game folder.** There is no editor, no save-file support and no mod
   tooling, by design.
 - **It ships no game content.** You need your own install; nothing from the games is
   redistributed here.
-- **MySims Wii and the older PC releases are not supported**; only the Cozy Bundle.
+- **Only the releases listed at the top are supported.** The Origin and other older PC releases
+  are not, nor are other platforms.
 - Many formats are read only in part. Where a field's meaning is unknown it is shown as unknown
   rather than guessed at.
 
